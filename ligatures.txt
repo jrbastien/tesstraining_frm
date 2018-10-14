@@ -1,0 +1,16 @@
+Œ	OE	E dans l'O			U+0152
+œ	oe	e dans l'o			U+0153
+ſ 	s	s long				U+017F	
+ﬀ	ff	f - f				U+FB00
+ﬁ	fi	f - i				U+FB01
+ﬂ	fl	f - l				U+FB02
+ﬃ	ffi	f - f - i			U+FB03
+ﬄ	ffl	f - f - l			U+FB04
+ﬅ	st	s long - t			U+FB05
+
+Non-unicode:
+
+	si	s long - i			U+EBA2
+	ss	s long - s long		U+EBA6
+	ssi	s long - s long - i	U+EBA7
+	ct	c - t				U+EEC5
