@@ -1,6 +1,6 @@
-# tesstrain_frm
+﻿# tesstrain_frm
 
-Entraînement de Tesseract 3-04, 3-05  pour la reconnaissance du Français avec polices basées sur le Romain du Roi. A été optimisé spécifiquement pour l’Art du Menuisier de Roubo (1761). Pourrait être utilisé pour faire l'OCR de tout ouvrage de la Description des Arts et Métiers.
+Entraînement de Tesseract 3-04, 3-05 pour la reconnaissance du moyen français avec des polices basées sur le Romain du Roi. A été optimisé spécifiquement pour l’Art du Menuisier de Roubo (1761). Pourrait être utilisé pour faire l'OCR de tout ouvrage de la Description des Arts et Métiers.
 
 ## Prérequis
 
@@ -13,7 +13,7 @@ Entraînement de Tesseract 3-04, 3-05  pour la reconnaissance du Français avec 
 
 Il faut des polices de style Grandjean et Fournier italique pour réaliser les images contenant le texte de référence.
 
-Remarque: les polices de petites capitales doivent être exclues de l'entraînement, car elles confondent l'OCR qui ne parvient plus à distinguer les vraies majuscules.
+Remarque: les polices de petites capitales doivent être exclues de l’entraînement, car elles confondent l'OCR qui ne parvient plus à distinguer les vraies majuscules.
 
 Il y a aussi 3 variations d’esperluette. C’est pourquoi on doit faire 2 variations des italiques avec un symbole d'esperluette différent dans chacune.
 
@@ -47,9 +47,9 @@ Non-unicode:
 
 ### Hauteur d’X
 
-La hauteur d’X de vos polices doit être ajouté au fichier Latin.xheights. La hauteur d’X est simplement le compte de pixels verticaux d’un x minuscule de 10 pt à 300 dpi. Vous pouvez le mesurer en utilisant un texte en PDF et en l’affichant dans un éditeur d’image comme GIMP.
+La hauteur d’X de vos polices doit être ajoutée au fichier Latin.xheights. La hauteur d’X est simplement le compte de pixels verticaux d’un x minuscule de 10 pt à 300 dpi. Vous pouvez la mesurer en utilisant un texte en PDF et en l’affichant dans un éditeur d’image comme GIMP.
 
-### Propriété de la police
+### Propriétés de la police
 
 Vos polices doivent être ajoutées au fichier font_properties.
 
@@ -57,7 +57,7 @@ Chaque ligne du fichier font_properties est formatée comme suit:
 
     fontname italic bold fixed serif fraktur
 
-où nom de la police est une chaîne nommant la police (aucun espace n'est autorisé!) et les propriétés nommées sont déterminées par soit la valeur 0 ou 1.
+où nom de la police est une chaîne nommant la police (aucun espace n’est autorisé!) et les propriétés nommées sont déterminées par soit la valeur 0 ou 1.
 
 Exemple:
 
@@ -65,11 +65,11 @@ Exemple:
 
 ### Numérotation et ponctuation
 
-Les fichiers frm.numbers et frm.punc devraient déjà contenir tous les formats de numérotations et de ponctuation utilisés dans l'ouvrage. Editez au besoin.
+Les fichiers frm.numbers et frm.punc devraient déjà contenir tous les formats de numérotations et de ponctuation utilisés dans l’ouvrage. Éditez au besoin.
 
 ### Texte d'entraînement
 
-Le fichier frm.training_text doit contenir tous les caracteres utilisés dans l’ouvrage.
+Le fichier frm.training_text doit contenir tous les caractères utilisés dans l’ouvrage.
 
 ### Bigrammes
 
@@ -93,17 +93,17 @@ Le ficher frm.unicharambigs permet d'éviter certaines ambiguïtés lors de la r
 
 Pour plus de détails sur le format de ce fichier, vous référer à la documentation offficelle [ici](https://github.com/tesseract-ocr/tesseract/blob/master/doc/unicharambigs.5.asc).
 
-Remarque: l'OCR gagnerait à ce que ce fichier soit amélioré pour inclure toutes les instances ou un ſ long peut être pris pour un f et vice-versa.  Il en est de même pour les ligatures.  Je ferai ces améliorations, si j'ai un autre document de la Description des Arts et Métiers à digitaliser.
+Remarque: l'OCR gagnerait à ce que ce fichier soit amélioré pour inclure toutes les instances ou un ſ long peut être pris pour un f et vice-versa. Il en est de même pour les ligatures. Je ferai ces améliorations, si j’ai un autre document de la Description des Arts et Métiers à digitaliser.
 
 ### Bigrammes de mots
 
-Comme avec les bigrammes de lettres, le fichier frm.word.bigrams définit la fréquence d'un mot par rapport à un autre.  Il est aussi ordonné du bigramme le plus fréquent à celui qui est le moins.
+Comme avec les bigrammes de lettres, le fichier frm.word.bigrams définit la fréquence d'un mot par rapport à un autre. Il est aussi ordonné du bigramme le plus fréquent à celui qui est le moins.
 
-Idéalement, il devrait être fait à partir de tout l’ouvrage, mais à défaut il peut être réalisé à partir de quelques chapitres.  Utilisez un outil en ligne comme [Online NGram Analyzer](http://guidetodatamining.com/ngramAnalyzer/)  
+Idéalement, il devrait être fait à partir de tout l’ouvrage, mais à défaut il peut être réalisé à partir de quelques chapitres. Utilisez un outil en ligne comme [Online NGram Analyzer](http://guidetodatamining.com/ngramAnalyzer/)  
 
 ### Liste de mots
 
-On doit fournir à tesseract la liste des mots possibles à reconnaître: frm.wordlist. La présente liste a été obtenu en combinant les mots spéciaux trouvés dans l'Art du Menuisier et ceux de la liste fournie par l'équipe de Tesseract sur Github. Pour ordonner la liste par fréquence, créer un fichier avec tous les mots appelé complet.xt et exécutez:
+On doit fournir à tesseract la liste des mots possibles à reconnaître: frm.wordlist. La présente liste a été obtenu en combinant les mots spéciaux trouvés dans l’Art du Menuisier et ceux de la liste fournie par l'équipe de Tesseract sur Github. Pour ordonner la liste par fréquence, créer un fichier avec tous les mots appelé complet.xt et exécutez:
 
     ~$ python tesswordlist.py
 
@@ -115,12 +115,17 @@ Il ne reste plus qu’à créer les fichiers d’entraînement de Tesseract à p
 
 ## Tester le résultat:
 
-Vérifier le fichier training_result.txt. Il ne devrait contenir d'autres erreurs que "Couldn't find a matching blob".  Cette erreur est plutôt commune car Tesseract procède par boîtes carrées et la forme des italiques a tendance à chevaucher celle des lettres régulières. Idéalement cela devrait être évité mais s’il y a peu de ces mauvais blobs par rapport au total trouvé, cela ne causera pas trop de problèmes.
+Vérifier le fichier training_result.txt. Il ne devrait contenir d'autres erreurs que "Couldn't find a matching blob". Cette erreur est plutôt commune car Tesseract procède par boîtes carrées et la forme des italiques a tendance à chevaucher celle des lettres régulières. Idéalement cela devrait être évité mais s’il y a peu de ces mauvais blobs par rapport au total trouvé, cela ne causera pas trop de problèmes.
 
 Pour tester le résultat, exécuter la commande suivante sur une image contenant le texte:
 
     ~$ tesseract page100.png page100 -l frm
 
+## Encore plus d’outils
+
+Une fois le fichier d’entraînement réalisé, vous pouvez procéder à l’OCR en utilisant les outils de mon autre repo : [ocrhelper](https://github.com/jrbastien/ocrhelper)
+
 ## En conclusion
+Si vous désirez seulement utiliser le fichier d’entraînement déjà réalisé, le télécharger [ici](https://github.com/jrbastien/tesstraining_frm/blob/master/frm.traineddata) et le copier dans /usr/share/tesseract-ocr/tessdata.
 
 Si vous trouvez ces outils ou ces informations utiles, n’hésitez pas à me le dire. J’aimerais aussi connaître vos suggestions d’amélioration.
