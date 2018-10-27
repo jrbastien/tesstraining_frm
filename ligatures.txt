@@ -1,5 +1,6 @@
 Œ	OE	E dans l'O			U+0152
 œ	oe	e dans l'o			U+0153
+æ	ae	e dans l'a			U+00E6
 ſ 	s	s long				U+017F	
 ﬀ	ff	f - f				U+FB00
 ﬁ	fi	f - i				U+FB01

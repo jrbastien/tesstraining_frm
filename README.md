@@ -17,6 +17,15 @@ Remarque: les polices de petites capitales doivent être exclues de l’entraîn
 
 Il y a aussi 3 variations d’esperluette. C’est pourquoi on doit faire 2 variations des italiques avec un symbole d'esperluette différent dans chacune.
 
+1. Mettre vos polices dans ./fonts
+
+2. Ouvir chacune avec le visionneur de polices de caractères et les installer. 
+
+3. Générer le fichier frm.fontlist.txt en exécutant:
+
+	```
+	~$ cd ./langdata/frm
+    ~$ text2image --text=frm.training_text --outputbase=frm --fonts_dir=../../fonts  --find_fonts --min_coverage=0.95 --render_per_font=false
 ### Jeux de caractères Unicode
 
 Le fichier Latin.unicharset a été modifié pour inclure les ligatures non supportées présentement par la norme Unicode. La valeur Unicode de ces ligatures a été déterminée à partir du standard fourni par le "[Medieval Unicode Font Initiative](https://folk.uib.no/hnooh/mufi/)". Vous pouvez les changer pour celle de votre propre police.
@@ -47,7 +56,14 @@ Non-unicode:
 
 ### Hauteur d’X
 
-La hauteur d’X de vos polices doit être ajoutée au fichier Latin.xheights. La hauteur d’X est simplement le compte de pixels verticaux d’un x minuscule de 10 pt à 300 dpi. Vous pouvez la mesurer en utilisant un texte en PDF et en l’affichant dans un éditeur d’image comme GIMP.
+La hauteur d’X de vos polices doit être ajoutée au fichier Latin.xheights. La hauteur d'X est la hauteur du x minuscule à 128 pt. Cette valeur est convertie des unités pango en pixels en utilisant la résolution de votre écran. 
+
+Simplement exécuter:
+
+    ~$ cd ../../xheight
+	~$ ./xheight.sh
+
+Les valeurs obtenues peuvent être vérifiées avec un éditeur graphique tel que Inkscape.  Créer un x minuscule avec la police Arial et mettre sa hauteur à 67 pixels. Changer la police pour celle à vérifier.  Sa nouvelle hauteur devrait correspondre à celle obtenue dans le fichier Latin.xheight (Assumant que Arial ). 
 
 ### Propriétés de la police
 
@@ -110,8 +126,9 @@ On doit fournir à tesseract la liste des mots possibles à reconnaître: frm.wo
 ## Compilation des fichiers d'entraînement de Tesseract
 
 Il ne reste plus qu’à créer les fichiers d’entraînement de Tesseract à partir du script en exécutant:
-
+```
 ~$ sudo ./tesstrain.sh --lang frm --langdata_dir ~/Documents/Roubo/Training2/langdata --tessdata_dir /usr/share/tesseract-ocr/tessdata/ --fonts_dir ~/.local/share/fonts --fontlist 'Caslon Roubo Regular' 'Fournier Roubo Italic' 'Fournier Roubo Alternate Italic' 'Fournier Roubo Alternate2 Italic' --output_dir /usr/share/tesseract-ocr/tessdata/ --overwrite >training_result.txt
+```
 
 ## Tester le résultat:
 
@@ -126,6 +143,6 @@ Pour tester le résultat, exécuter la commande suivante sur une image contenant
 Une fois le fichier d’entraînement réalisé, vous pouvez procéder à l’OCR en utilisant les outils de mon autre repo : [ocrhelper](https://github.com/jrbastien/ocrhelper)
 
 ## En conclusion
-Si vous désirez seulement utiliser le fichier d’entraînement déjà réalisé, le télécharger [ici](https://github.com/jrbastien/tesstraining_frm/blob/master/frm.traineddata) et le copier dans /usr/share/tesseract-ocr/tessdata.
+Si vous désirez seulement utiliser le fichier d’entraînement déjà réalisé, le télécharger [ici](https://github.com/jrbastien/tesstraining_frm/blob/master/tessdata/frm.traineddata) et le copier dans /usr/share/tesseract-ocr/tessdata.
 
 Si vous trouvez ces outils ou ces informations utiles, n’hésitez pas à me le dire. J’aimerais aussi connaître vos suggestions d’amélioration.
